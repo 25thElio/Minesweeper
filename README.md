@@ -1,6 +1,6 @@
 # Minesweeper
 Discription:
-This is my quick and dirty text based version of Minesweeper in python. Please do not try at home!
+This is my quick and dirty text based version of Minesweeper in python.
 
 Instructions:
 Just follow terminal-instructions.
