@@ -2,7 +2,7 @@
 Discription:
 This is my quick and dirty text based version of Minesweeper in python. Please do not try at home!
 
-Instruction:
+Instructions:
 Just follow terminal-instructions.
 
 Copyright:
