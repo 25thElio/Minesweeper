@@ -80,19 +80,32 @@ def uncover(x,y,numBoard,XBoard,Board):
 
 playing=True
 print('Enter width, height, and number of mines of the minefield')
-try:
-    width=int(input('Width: '))
-except ValueError:
-    print('Only positive integers!')
-try:
-    heigth=int(input('Heigth: '))
-except ValueError:
-    print('Only positive integers!')
-try:
-    n=int(input('Number of mines: '))
-except ValueError:
-    print('Only positive integers smaller than ',width*heigth,'!')
-Board=createBoard(width,heigth,n)
+
+while True:
+    try:
+        width=int(input('Width: '))
+        if width<0:
+            raise ValueError
+        break
+    except ValueError:
+        print('Only positive integers!')
+while True:
+    try:
+        height=int(input('Height: '))
+        if height<0:
+            raise ValueError
+        break
+    except ValueError:
+        print('Only positive integers!')
+while True:
+    try:
+        n=int(input('Number of mines: '))
+        if n<1 or n>width*height:
+            raise ValueError
+        break
+    except ValueError:
+        print('Only positive integers smaller than ',width*height,'!')
+Board=createBoard(width,height,n)
 numBoard=getNumbers(Board)
 XBoard=createXBoard(Board)
 V=0
@@ -101,14 +114,22 @@ count=0
 while playing:
     count+=1
     print('Move ',count)
-    try:
-        x=int(input('x-coordinate of your move: '))
-    except ValueError:
-        print('Only positive integers smaller than ',width,'!')
-    try:
-        y=int(input('y-coordinate of your move: '))
-    except ValueError:
-        print('Only positive integers smaller than ',heigth,'!')
+    while True:
+        try:
+            x=int(input('x-coordinate of your move: '))
+            if x<1 or x>width:
+                raise ValueError
+            break
+        except ValueError:
+            print('Only positive integers smaller than ',width,'!')
+    while True:
+        try:
+            y=int(input('y-coordinate of your move: '))
+            if y<1 or y>height:
+                raise ValueError
+            break
+        except ValueError:
+            print('Only positive integers smaller than ',height,'!')
         
     playing,XBoard=uncover(y-1,x-1,numBoard,XBoard,Board)
     
@@ -121,4 +142,3 @@ if V==1:
     print('You win!!!')
 else:
     print('You lose :(')
-    
